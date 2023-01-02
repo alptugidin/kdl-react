@@ -9,7 +9,7 @@
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/consistent-type-assertions": "off",
     "no-trailing-spaces": "warn",
-    "padded-blocks": "warn",
+    "padded-blocks": "off",
     "no-multiple-empty-lines": "warn",
     "indent": [
       "warn",
