@@ -1,21 +1,25 @@
 import React from 'react';
 import SearchBox from './SearchBox';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const Header: React.FC = () => {
 
+  const router = useRouter();
   return (
-    <div className='w-full h-24 p-2'>
-      <div className='w-full h-full rounded-2xl bg-yellow-100 border-blue-500 border header flex px-1.5'>
+    <div className='h-16 w-full bg-gradient-to-r from-rose-400 to-blue-400 shadow-sm border-b absolute left-0 right-0'>
+      <div className='container mx-auto flex h-full'>
         <div className='basis-1/3 flex items-center'>
-          <Image src='/logo.png' alt='logo' width={250} height={65} quality={95}/>
+          <Image
+            src='/logoSVG.svg'
+            width={200} height={0} alt='logo'
+            className='cursor-pointer select-none'
+            onClick={() => router.push('/') } />
         </div>
         <div className='basis-1/3 flex items-center'>
           <SearchBox/>
         </div>
-        <div className='basis-1/3'>
-
-        </div>
+        <div className='basis-1/3 flex items-center'></div>
       </div>
     </div>
   );
