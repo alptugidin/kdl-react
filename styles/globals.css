@@ -17,3 +17,16 @@
    box-shadow: 2px 2px #244C92;
 }
 
+.touch-scroll::-webkit-scrollbar {
+   height: 10px;
+ }
+
+.touch-scroll::-webkit-scrollbar-thumb {
+   background: rgb(187, 187, 187);
+   border-radius: 10px;
+ }
+
+
+ /* .touch-scroll::-webkit-scrollbar-corner{
+   border-radius: 999px;
+ } */
