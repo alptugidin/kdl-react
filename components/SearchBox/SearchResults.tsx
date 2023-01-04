@@ -26,20 +26,7 @@ const SearchResults: React.FC<ISearchResults> = (props) => {
     props.setResults(prev => ({...prev, series: []}));
   };
 
-
-  // const tag = (tag:string): JSX.Element => {
-  //   const randomBgColor = ['bg-red-400', 'bg-blue-400', 'bg-yellow-400', 'bg-indigo-400', 'bg-gray-400', 'bg-green-400', 'bg-purple-400'];
-  //   const randomTextColor = ['text-red-50', 'text-blue-50', 'text-yellow-200', 'text-indigo-50', 'text-gray-50', 'text-green-50', 'text-purple-50'];
-  //   return (
-  //     <div className={`px-1 rounded-full flex items-center ${randomBgColor[random]}`}>
-  //       <span className={randomTextColor[random]}>{tag}</span>
-  //     </div>
-  //   );
-  // };
-
-
   const handleTagSelect = (name: string): void => {
-    // setColorfulTags(prev => [...prev, name]);
     const random = Math.floor(Math.random() * 7);
     const randomBgColor = ['bg-red-400', 'bg-blue-400', 'bg-yellow-400', 'bg-indigo-400', 'bg-gray-400', 'bg-green-400', 'bg-purple-400'];
     const randomTextColor = ['text-red-50', 'text-blue-50', 'text-yellow-200', 'text-indigo-50', 'text-gray-50', 'text-green-50', 'text-purple-50'];
@@ -48,8 +35,10 @@ const SearchResults: React.FC<ISearchResults> = (props) => {
       <span className={randomTextColor[random]}>{name}</span>
     </div>;
     if (tagsRef.current !== null && tagsRef.current !== undefined){
-      tagsRef.current.innerHTML += `<div class='px-1 h-fit rounded-lg border text-sm items-center ${randomBgColor[random]}'}>
+      tagsRef.current.innerHTML +=`
+      <div class='px-1 h-5 flex flex-nowrap pr-6 rounded-lg border text-sm items-center ${randomBgColor[random]}'}>
         <span class='${randomTextColor[random]} whitespace-nowrap'>${name}</span>
+        <img src="/remove.svg" alt="remove" class='w-2' />
       </div>`;
     }
   };
@@ -70,7 +59,7 @@ const SearchResults: React.FC<ISearchResults> = (props) => {
             <li
               key={i}
               onClick={() => handleSerieSelect(serie.name)}
-              className='pl-8 from-rose-50 to-blue-50 hover:bg-gradient-to-r cursor-pointer h-8 flex items-center'
+              className='pl-8 from-rose-50 to-blue-50 hover:bg-gradient-to-r cursor-pointer h-8 flex items-center select-none'
             >
               {highlighted(serie.name)}
             </li>
@@ -79,7 +68,7 @@ const SearchResults: React.FC<ISearchResults> = (props) => {
               <li
                 key={i}
                 onClick={() => handleTagSelect(tag.tag)}
-                className='pl-8 from-rose-50 to-blue-50 hover:bg-gradient-to-r cursor-pointer h-8 flex items-center'
+                className='pl-8 from-rose-50 to-blue-50 hover:bg-gradient-to-r cursor-pointer h-8 flex items-center select-none'
               >
                 {highlighted(tag.tag)}
               </li>
