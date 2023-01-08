@@ -11,6 +11,7 @@
     "no-trailing-spaces": "warn",
     "padded-blocks": "off",
     "no-multiple-empty-lines": "warn",
+    "quotes": ["error", "single"],
     "indent": [
       "warn",
       2
