@@ -32,6 +32,7 @@ const SearchBox: React.FC = () => {
         setResults(prev => ({...prev, tags: tagsData}));
         break;
       }
+
     }
     if (e.target.value.length < 2) {
       setResults({series: [], tags: []});
@@ -39,6 +40,7 @@ const SearchBox: React.FC = () => {
   };
 
   const handleSearchType = (): void => {
+    setSearchBox(prev => ({...prev, value:''}));
     if (searchBox.searchType === 'Search by Name') {
       setSearchBox(prev => ({...prev, searchType: 'Search by Tags', placeholder: 'e.g. Romance'}));
     } else {
@@ -59,7 +61,7 @@ const SearchBox: React.FC = () => {
     <>
       <div
         onClick={handleOutsideClick}
-        className={`absolute left-0 top-0 w-full h-screen z-40 ${results.series.length > 0 ? 'block' : 'hidden'}`}></div>
+        className={`absolute left-0 top-0 w-full h-screen z-40 ${(results.series.length > 0 || results.tags.length > 0) ? 'block' : 'hidden'}`}></div>
       <div ref={searchBox.ref} className='w-full relative z-50'>
         <div className='w-full flex'>
           <div className='absolute mt-[6px] ml-[6px]'>
@@ -71,7 +73,7 @@ const SearchBox: React.FC = () => {
             onChange={handleOnChange}
             value={searchBox.value}
             placeholder={searchBox.placeholder}
-            className='h-8 rounded-full w-full pl-8 pr-36 outline-none placeholder:italic placeholder:select-none focus:shadow-lg hover:shadow-lg transition-all'
+            className='h-8 rounded-full w-full pl-8 pr-36 outline-none placeholder:italic placeholder:select-none focus:shadow-lg hover:shadow-lg transition-all bg-white'
           />
           {(searchBox.value.length > 0 && searchBox.searchType === 'Search by Name') &&
             <button
