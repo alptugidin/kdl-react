@@ -33,7 +33,7 @@ const SearchResults: React.FC<ISearchResults> = (props) => {
     const randomTextColor = ['text-red-600', 'text-blue-600', 'text-yellow-600', 'text-indigo-600', 'text-gray-600', 'text-green-600', 'text-purple-600'];
     const el =
             <div
-              className={`px-1 rounded-full flex items-center gap-2 justify-between text-sm whitespace-nowrap ${randomBgColor[random]}`}>
+              className={`px-1 rounded-md flex items-center gap-2 justify-between text-sm whitespace-nowrap ${randomBgColor[random]}`}>
               <span className={`${randomTextColor[random]} select-none`}>{name}</span>
               <button
                 type='button'
