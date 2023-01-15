@@ -7,7 +7,7 @@ const Header: React.FC = () => {
 
   const router = useRouter();
   return (
-    <div className='md:h-16 h-20 w-full bg-gradient-to-r from-rose-400 to-blue-400 shadow-sm border-b absolute left-0 right-0'>
+    <div className='md:h-16 h-20 w-full bg-gradient-to-r from-rose-400 to-blue-400 shadow-sm border-b'>
       <div className='container mx-auto md:flex h-full'>
         <div className='basis-1/3 flex items-center md:justify-start justify-center md:h-auto h-10'>
           <Image
