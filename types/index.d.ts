@@ -41,3 +41,4 @@ export interface ISearchResults {
         placeholder: string;
     }>>
 }
+
