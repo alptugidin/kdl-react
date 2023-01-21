@@ -32,3 +32,8 @@
 .cards-container {
     @apply 2xl:w-[1482px] xl:w-[1154px] lg:w-[990px] md:w-[706px] sm:w-[606px]
 }
+
+.title {
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 100%);
+}
