@@ -1,6 +1,5 @@
 import Head from 'next/head';
-import {Header} from '../components';
-import CardsContainer from '../components/CardsContainer';
+import {Header, LatestContainer, PopularsContainer} from '../components';
 
 
 export default function Home() {
@@ -15,8 +14,8 @@ export default function Home() {
 
       <main>
         <Header/>
-        <CardsContainer type='latest'/>
-        <CardsContainer type='popular'/>
+        <LatestContainer/>
+        <PopularsContainer/>
       </main>
     </>
   );
