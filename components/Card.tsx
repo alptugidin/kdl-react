@@ -2,7 +2,10 @@ import React from 'react';
 import Image from 'next/image';
 import {Flat} from '@alptugidin/react-circular-progress-bar';
 
-const Card: React.FC = () => {
+interface ICard {
+    name: string
+}
+const Card: React.FC<ICard> = ({name}) => {
   return (
     <div className='card group cursor-pointer relative'>
       <div className='lg:w-16 lg:h-16 h-11 w-11 absolute right-0 top-0 z-50 hidden'>
@@ -30,7 +33,7 @@ const Card: React.FC = () => {
           <Image src='/img/136.webp' width={160} height={120} alt='poster'/>
         </div>
         <div className='absolute bottom-0 title w-full h-20 flex flex-col items-center justify-end text-center text-yellow-400'>
-          <p className=''>Korean Drama</p>
+          <p className=''>{name}</p>
           <p className='font-semibold'>2022</p>
         </div>
       </div>
