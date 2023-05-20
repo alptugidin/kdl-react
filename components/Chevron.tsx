@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 interface IChevron {
     direction: string
     onClick: (direction: string) => void
-    parentRef: React.RefObject<HTMLDivElement>
+    parentRef?: React.RefObject<HTMLDivElement>
 }
 const Chevron: React.FC<IChevron> = ({direction, onClick, parentRef}) => {
   const chevronRef = useRef<HTMLButtonElement>(null);

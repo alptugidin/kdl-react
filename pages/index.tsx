@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import {Header, LatestContainer, PopularsContainer} from '../components';
+import CardsContainer from '../components/CardsContainer';
 
 
 export default function Home() {
@@ -12,10 +13,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico"/>
       </Head>
 
-      <main>
+      <main className=''>
         <Header/>
-        <LatestContainer/>
-        <PopularsContainer/>
+        <CardsContainer/>
+        {/*<LatestContainer/>*/}
+        {/*<PopularsContainer/>*/}
       </main>
     </>
   );

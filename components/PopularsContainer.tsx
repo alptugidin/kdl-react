@@ -27,15 +27,15 @@ const PopularsContainer = () => {
         </select>
       </div>
       <div className='relative'>
-        <Chevron direction='left'/>
+        <Chevron direction='left' onClick={() => {}}/>
         <div className='w-full border rounded-lg p-1 flex gap-1 sm:overflow-hidden overflow-auto relative'>
           {Array.from(Array(20).keys()).map((i, _) => (
             <div key={_}>
-              <Card/>
+              <Card name={'name'}/>
             </div>
           ))}
         </div>
-        <Chevron direction='right'/>
+        <Chevron direction='right' onClick={() => {}}/>
       </div>
     </div>
   );
