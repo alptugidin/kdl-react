@@ -1,5 +1,8 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:tailwindcss/recommended"
+  ],
   "rules": {
     "semi": [
       "error",
@@ -17,6 +20,15 @@
       2
     ],
     "@typescript-eslint/indent": "off",
-    "@typescript-eslint/strict-boolean-expressions": "off"
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "react-hooks/exhaustive-deps": "off"
+  },
+  "settings": {
+    "tailwindcss": {
+      "callees": ["classnames", "clsx", "ctl"],
+      "config": "tailwind.config.js",
+      "removeDuplicates": true,
+      "no-contradicting-classname": true
+    }
   }
 }
