@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import CardNew from './CardNew';
+import {Chevron} from './index';
 
 type Operator = '+' | '-';
 const CardsContainer = () => {
-  // create an array contains numbers
   const arr = [...Array(20).keys()];
   const length = 20;
   const count = 8;
@@ -24,38 +24,41 @@ const CardsContainer = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(arr.slice(cursor.first, cursor.last));
-  }, [cursor]);
-
   return (
-    <div className='py-10 flex overflow-hidden container mx-auto card-container relative'>
-      <div className='absolute bottom-0 w-full flex justify-center gap-3'>
-        <button
-          onClick={() => changeCursor('-')}
-          className='bg-red-600 text-white font-semibold rounded-lg px-3 py-1 hover:bg-red-700'
-        >cursor -
-        </button>
-        <button
-          onClick={() => changeCursor('+')}
-          className='bg-green-600 text-white font-semibold rounded-lg px-3 py-1 hover:bg-green-700'
-        >
-          cursor +
-        </button>
-        <span>cursor: {JSON.stringify(cursor)}</span>
+    <div className='pt-10 '>
+      <div className='font-ubuntu container relative mx-auto pb-5 text-center text-3xl text-gray-700'>
+        <span>Latest Korean Dramas</span>
+
+        {
+          cursor.first !== 0 &&
+					<Chevron
+					  direction={'left'}
+					  onClick={() => changeCursor('-')}
+					/>
+        }
+        {
+          cursor.last !== length &&
+					<Chevron
+					  direction={'right'}
+					  onClick={() => changeCursor('+')}
+					/>
+        }
+
       </div>
-      {arr.slice(cursor.first, cursor.last).map((el, index) => (
-        <div key={index}>
-          <CardNew id={el + 1}/>
+      <div className='card-container container relative mx-auto flex h-[336px] overflow-hidden'>
+        <div
+          style={{
+            left: `${-100 * cursor.first / count}%`,
+          }}
+          className='absolute flex justify-around transition-all duration-500'
+        >
+          {arr.slice(0, 16).map((el, index) => (
+            <div key={index}>
+              <CardNew id={el + 1}/>
+            </div>
+          ))}
         </div>
-      ))}
-      {/*{*/}
-      {/*  [...Array(20)].map((_, index) => (*/}
-      {/*    <div key={index}>*/}
-      {/*      <CardNew id={index + 1}/>*/}
-      {/*    </div>*/}
-      {/*  ))*/}
-      {/*}*/}
+      </div>
     </div>
   );
 };
