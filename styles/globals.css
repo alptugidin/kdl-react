@@ -39,5 +39,5 @@
 /*}*/
 
 .card-container {
-    @apply w-[calc(186px*8)] bg-gray-200;
+    @apply w-[calc(186px*8)];
 }
