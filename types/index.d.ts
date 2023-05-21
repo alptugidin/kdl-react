@@ -41,3 +41,10 @@ export interface ISearchResults {
         placeholder: string;
     }>>
 }
+
+type Direction = 'left' | 'right'
+export interface IChevron {
+    direction: Direction,
+    onClick: () => void
+}
+
