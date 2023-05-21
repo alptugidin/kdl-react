@@ -16,8 +16,6 @@ export default function Home() {
       <main className=''>
         <Header/>
         <CardsContainer/>
-        {/*<LatestContainer/>*/}
-        {/*<PopularsContainer/>*/}
       </main>
     </>
   );
