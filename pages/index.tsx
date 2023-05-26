@@ -1,6 +1,6 @@
+import React from 'react';
 import Head from 'next/head';
-import {Header, LatestContainer, PopularsContainer} from '../components';
-import CardsContainer from '../components/CardsContainer';
+import {CardsContainer, Header} from '../components';
 
 
 export default function Home() {
