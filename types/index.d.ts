@@ -42,6 +42,10 @@ export interface ISearchResults {
     }>>
 }
 
+export interface ICard {
+    id: number
+}
+
 type Direction = 'left' | 'right'
 export interface IChevron {
     direction: Direction,
