@@ -1,43 +1,70 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Image from 'next/image';
-import {Flat} from '@alptugidin/react-circular-progress-bar';
+import {ICard} from '../types';
+import {useAppDispatch} from '../store/store';
+import {openModal} from '../features/slices/modalSlice';
 
-interface ICard {
-    name: string
-}
-const Card: React.FC<ICard> = ({name}) => {
+// 186x336
+const Card: React.FC<ICard> = ({id}) => {
+
+  const cardRef = useRef<HTMLButtonElement>(null);
+  const dispatch = useAppDispatch();
+  const [isVisible, setIsVisible] = useState(false);
+
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5
+  };
+
+  const load = (e: IntersectionObserverEntry[]): void => {
+    if (e[0].isIntersecting) {
+      setIsVisible(true);
+      cardRef.current?.classList.add('opacity-100');
+      cardRef.current?.classList.remove('opacity-0');
+    } else {
+      setIsVisible(false);
+      cardRef.current?.classList.remove('opacity-100');
+      cardRef.current?.classList.add('opacity-0');
+    }
+  };
+
+  const handleOnClick = () => {
+    dispatch(openModal(true));
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(load, options);
+    observer.observe(cardRef.current as HTMLButtonElement);
+  }, []);
+
   return (
-    <div className='card group cursor-pointer relative'>
-      <div className='lg:w-16 lg:h-16 h-11 w-11 absolute right-0 top-0 z-50 hidden'>
-        <Flat
-          progress={50}
-          text={'Match'}
-          showMiniCircle={false}
-          sx={{
-            strokeColor: '#ff0000',
-            barWidth: 5,
-            bgStrokeColor: '#d9d9d9',
-            strokeLinecap: 'butt',
-            bgColor: {value: '#000000', transparency: '70'},
-            valueSize: 32,
-            textSize: 28,
-            textColor: '#facc15',
-            valueColor: '#facc15',
-            valueWeight: 'bold',
-            textWeight: 'bold'
-          }}
-        />
-      </div>
-      <div>
-        <div className='w-fit transition-all overflow-hidden group-hover:scale-110 duration-[400ms]'>
-          <Image src='/img/136.webp' width={160} height={120} alt='poster'/>
+    <button
+      type='button'
+      ref={cardRef}
+      onClick={handleOnClick}
+      className='p-2 transition-opacity duration-[87ms] ease-linear'
+    >
+      <div
+        className='group h-[320px] w-[170px] cursor-pointer overflow-hidden rounded-b-2xl rounded-t-md bg-gradient-to-r from-rose-50 to-blue-50 drop-shadow-lg'
+      >
+        <div className=' h-[240px] overflow-hidden'>
+          <Image
+            src={`/img/${id}.jpg`}
+            alt='thumbnail'
+            width={0}
+            height={0}
+            sizes='100vw'
+            className={'h-auto w-full rounded-t-md duration-300 group-hover:scale-105'}
+          />
         </div>
-        <div className='absolute bottom-0 title w-full h-20 flex flex-col items-center justify-end text-center text-yellow-400'>
-          <p className=''>{name}</p>
-          <p className='font-semibold'>2022</p>
+        <div className='flex flex-col p-1 text-left'>
+          <span className='truncate font-semibold text-gray-700'>The Good Bad Mother</span>
+          <span className='text-xs text-gray-500'>나쁜엄마</span>
+          <span className='font-semibold text-gray-700'>2023</span>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 
