@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import CardNew from './CardNew';
-import {Chevron} from './index';
+import {Card, Chevron, Modal} from '.';
 
 type Operator = '+' | '-';
 const CardsContainer = () => {
@@ -26,9 +25,9 @@ const CardsContainer = () => {
 
   return (
     <div className='pt-10 '>
+      <Modal/>
       <div className='font-ubuntu container relative mx-auto pb-5 text-center text-3xl text-gray-700'>
         <span>Latest Korean Dramas</span>
-
         {
           cursor.first !== 0 &&
 					<Chevron
@@ -45,16 +44,16 @@ const CardsContainer = () => {
         }
 
       </div>
-      <div className='card-container container relative mx-auto flex h-[336px] overflow-hidden'>
+      <div className='card-container container relative mx-auto flex h-[350px] items-center overflow-hidden'>
         <div
           style={{
             left: `${-100 * cursor.first / count}%`,
           }}
-          className='absolute flex justify-around transition-all duration-500'
+          className='absolute flex justify-around transition-all duration-700'
         >
           {arr.slice(0, 16).map((el, index) => (
             <div key={index}>
-              <CardNew id={el + 1}/>
+              <Card id={el + 1}/>
             </div>
           ))}
         </div>
