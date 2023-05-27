@@ -5,17 +5,18 @@ import {useAppDispatch} from '../store/store';
 import {openModal} from '../features/slices/modalSlice';
 
 // 186x336
-const Card: React.FC<ICard> = ({id}) => {
+const Card: React.FC<ICard> = ({id, data}) => {
 
   const cardRef = useRef<HTMLButtonElement>(null);
   const dispatch = useAppDispatch();
   const [isVisible, setIsVisible] = useState(false);
-
   const options = {
     root: null,
     rootMargin: '0px',
     threshold: 0.5
   };
+
+  const {name,aka,idx,title,year,summary,summaryLink,tags,video,co} = data;
 
   const load = (e: IntersectionObserverEntry[]): void => {
     if (e[0].isIntersecting) {
@@ -30,12 +31,13 @@ const Card: React.FC<ICard> = ({id}) => {
   };
 
   const handleOnClick = () => {
-    dispatch(openModal(true));
+    dispatch(openModal({isOpen: true, content: data}));
   };
 
   useEffect(() => {
     const observer = new IntersectionObserver(load, options);
     observer.observe(cardRef.current as HTMLButtonElement);
+
   }, []);
 
   return (
@@ -59,9 +61,9 @@ const Card: React.FC<ICard> = ({id}) => {
           />
         </div>
         <div className='flex flex-col p-1 text-left'>
-          <span className='truncate font-semibold text-gray-700'>The Good Bad Mother</span>
-          <span className='text-xs text-gray-500'>나쁜엄마</span>
-          <span className='font-semibold text-gray-700'>2023</span>
+          <span className='truncate font-semibold text-gray-700'>{name}</span>
+          <span className='truncate text-xs text-gray-500'>{title}</span>
+          <span className='font-semibold text-gray-700'>{year}</span>
         </div>
       </div>
     </button>
