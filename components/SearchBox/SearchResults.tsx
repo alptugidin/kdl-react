@@ -33,7 +33,7 @@ const SearchResults: React.FC<ISearchResults> = (props) => {
     const randomTextColor = ['text-red-600', 'text-blue-600', 'text-yellow-600', 'text-indigo-600', 'text-gray-600', 'text-green-600', 'text-purple-600'];
     const el =
             <div
-              className={`px-1 rounded-md flex items-center gap-2 justify-between text-sm whitespace-nowrap ${randomBgColor[random]}`}>
+              className={`flex items-center justify-between gap-2 whitespace-nowrap rounded-md px-1 text-sm ${randomBgColor[random]}`}>
               <span className={`${randomTextColor[random]} select-none`}>{name}</span>
               <button
                 type='button'
@@ -60,12 +60,12 @@ const SearchResults: React.FC<ISearchResults> = (props) => {
 
   return (
     <div
-      className='absolute top-9 bg-white w-full rounded-2xl overflow-hidden drop-shadow-lg'>
+      className='absolute top-9 w-full overflow-hidden rounded-2xl bg-white drop-shadow-lg'>
       <ul ref={props.resultRef}>
         {props.results.tags.length > 0 &&
           <div
             ref={tagsRef}
-            className='flex gap-1 h-10 border-b items-center px-4 touch-scroll overflow-auto'
+            className='touch-scroll flex h-10 items-center gap-1 overflow-auto border-b px-4'
             onClick={removeTag}
           >
             {colorfulTags.map((tag, i) => <div key={i}>{tag}</div>)}
@@ -76,7 +76,7 @@ const SearchResults: React.FC<ISearchResults> = (props) => {
             <li
               key={i}
               onClick={() => handleSerieSelect(serie.name)}
-              className='pl-8 from-rose-50 to-blue-50 hover:bg-gradient-to-r cursor-pointer h-8 flex items-center select-none'
+              className='flex h-8 cursor-pointer select-none items-center from-rose-50 to-blue-50 pl-8 hover:bg-gradient-to-r'
             >
               {highlighted(serie.name)}
             </li>
@@ -85,7 +85,7 @@ const SearchResults: React.FC<ISearchResults> = (props) => {
               <li
                 key={i}
                 onClick={() => handleTagSelect(tag.tag)}
-                className='pl-8 from-rose-50 to-blue-50 hover:bg-gradient-to-r cursor-pointer h-8 flex items-center select-none'
+                className='flex h-8 cursor-pointer select-none items-center from-rose-50 to-blue-50 pl-8 hover:bg-gradient-to-r'
               >
                 {highlighted(tag.tag)}
               </li>
@@ -95,7 +95,7 @@ const SearchResults: React.FC<ISearchResults> = (props) => {
         {props.results.tags.length > 0 &&
           <button
             type='button'
-            className='w-full h-8 from-rose-50 to-blue-50 hover:bg-gradient-to-r border-t tracking-wider hover:font-semibold'
+            className='h-8 w-full border-t from-rose-50 to-blue-50 tracking-wider hover:bg-gradient-to-r hover:font-semibold'
             onClick={handleSelectWithTags}
           >
             Search

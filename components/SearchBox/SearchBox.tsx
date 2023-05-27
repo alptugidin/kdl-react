@@ -61,10 +61,10 @@ const SearchBox: React.FC = () => {
     <>
       <div
         onClick={handleOutsideClick}
-        className={`absolute left-0 top-0 w-full h-screen z-40 ${(results.series.length > 0 || results.tags.length > 0) ? 'block' : 'hidden'}`}></div>
-      <div ref={searchBox.ref} className='w-full relative z-50'>
-        <div className='w-full flex'>
-          <div className='absolute mt-[6px] ml-[6px]'>
+        className={`absolute left-0 top-0 z-40 h-screen w-full ${(results.series.length > 0 || results.tags.length > 0) ? 'block' : 'hidden'}`}></div>
+      <div ref={searchBox.ref} className='relative z-50 w-full'>
+        <div className='flex w-full'>
+          <div className='absolute ml-[6px] mt-[6px]'>
             <Search/>
           </div>
           <input
@@ -73,20 +73,20 @@ const SearchBox: React.FC = () => {
             onChange={handleOnChange}
             value={searchBox.value}
             placeholder={searchBox.placeholder}
-            className='h-8 rounded-full w-full pl-8 pr-36 outline-none placeholder:italic placeholder:select-none focus:shadow-lg hover:shadow-lg transition-all bg-white'
+            className='h-8 w-full rounded-full bg-white pl-8 pr-36 outline-none transition-all placeholder:select-none placeholder:italic hover:shadow-lg focus:shadow-lg'
           />
           {(searchBox.value.length > 0 && searchBox.searchType === 'Search by Name') &&
             <button
               type='button'
               onClick={handleClear}
-              className='absolute top-[4px] right-[120px] transition-all hover:bg-gray-100 rounded-full p-0.5'>
+              className='absolute right-[120px] top-[4px] rounded-full p-0.5 transition-all hover:bg-gray-100'>
               <Clear/>
             </button>
           }
           <button
             type='button'
             onClick={handleSearchType}
-            className='bg-[#9990CE] hover:bg-[#8679cc] transition-all text-white rounded-2xl py-0.5 px-1 text-sm h-6 mt-1 mr-1 w-[112px] outline-none absolute top-0 right-0'>
+            className='absolute right-0 top-0 mr-1 mt-1 h-6 w-[112px] rounded-2xl bg-[#9990CE] px-1 py-0.5 text-sm text-white outline-none transition-all hover:bg-[#8679cc]'>
             <span>
               {searchBox.searchType}
             </span>
