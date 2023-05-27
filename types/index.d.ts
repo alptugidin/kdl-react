@@ -44,6 +44,7 @@ export interface ISearchResults {
 
 export interface ICard {
     id: number
+    data: ISeries
 }
 
 type Direction = 'left' | 'right'
