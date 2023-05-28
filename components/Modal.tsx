@@ -110,7 +110,7 @@ const Modal = () => {
                 </div>
               </div>
               <hr/>
-              <div className='h-full w-full overflow-auto'>
+              <div className='h-full w-full'>
                 <div className='flex w-full flex-wrap items-center gap-1 pr-1 pt-2'>
                   {content?.tags.map((tag, i) => (
                     <div key={i}>
@@ -123,18 +123,21 @@ const Modal = () => {
             </div>
           </div>
           <div className='flex px-2 pb-1'>
-            <div className='h-[200px] basis-1/2 overflow-auto pb-2 pr-1 text-sm'>
-              {content?.summary}
+            <div className='h-[200px] basis-1/2 pb-2 pr-1 text-sm'>
+              <div className='h-full overflow-auto'>
+                {content?.summary}
               &nbsp; &nbsp;
-              <a
-                target={'_blank'}
-                className={'cursor-pointer select-none text-blue-600 hover:underline'}
-                href={content?.summaryLink} rel="noreferrer">Read More</a>
+                <a
+                  target={'_blank'}
+                  className={'cursor-pointer select-none text-blue-600 hover:underline'}
+                  href={content?.summaryLink} rel="noreferrer">Read More</a>
+              </div>
             </div>
             <div className='basis-1/2'>
               <iframe
                 className='aspect-video w-full rounded-3xl'
                 src={content?.video}
+                allowFullScreen
               />
             </div>
           </div>
